@@ -17,6 +17,9 @@
     "mongodb"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0 <23.0.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
