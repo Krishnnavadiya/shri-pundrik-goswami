@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fefdf9;
+    color: #292524;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Cinzel', Georgia, serif;
+    letter-spacing: 0.02em;
+  }
+  .font-display {
+    font-family: 'Cinzel', Georgia, serif;
+  }
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-saffron-700 hover:bg-saffron-800 text-white focus:ring-saffron-500 shadow-sm;
+  }
+  .btn-secondary {
+    @apply btn bg-white hover:bg-cream-100 text-saffron-800 border border-saffron-300 focus:ring-saffron-400;
+  }
+  .btn-outline {
+    @apply btn border-2 border-white text-white hover:bg-white hover:text-saffron-900;
+  }
+  .btn-gold {
+    @apply btn bg-gold-500 hover:bg-gold-600 text-white shadow-sm;
+  }
+  .heading-divider {
+    @apply inline-flex items-center gap-3 text-saffron-700 text-sm font-medium uppercase tracking-[0.25em] mb-3;
+  }
+  .heading-divider::before,
+  .heading-divider::after {
+    content: '';
+    @apply h-px w-12 bg-saffron-300;
+  }
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl md:text-5xl text-saffron-900 mb-4 leading-tight;
+  }
+  .section-subtitle {
+    @apply font-serif text-lg text-stone-600 max-w-2xl mx-auto;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-soft hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-cream-200;
+  }
+  .input {
+    @apply w-full px-4 py-2.5 rounded-md border border-stone-300 bg-white focus:border-saffron-500 focus:ring-2 focus:ring-saffron-200 focus:outline-none transition-colors text-stone-800 placeholder:text-stone-400;
+  }
+  .label {
+    @apply block text-sm font-medium text-stone-700 mb-1.5;
+  }
+  .prose-bhakti {
+    @apply text-stone-700 leading-relaxed;
+  }
+  .prose-bhakti p {
+    @apply mb-4;
+  }
+  .prose-bhakti h1,
+  .prose-bhakti h2,
+  .prose-bhakti h3 {
+    @apply text-saffron-900 font-display mt-8 mb-4;
+  }
+  .prose-bhakti h2 {
+    @apply text-2xl;
+  }
+  .prose-bhakti h3 {
+    @apply text-xl;
+  }
+  .prose-bhakti ul {
+    @apply list-disc pl-6 mb-4 space-y-1;
+  }
+  .prose-bhakti ol {
+    @apply list-decimal pl-6 mb-4 space-y-1;
+  }
+  .prose-bhakti a {
+    @apply text-saffron-700 underline hover:text-saffron-900;
+  }
+  .prose-bhakti blockquote {
+    @apply border-l-4 border-saffron-400 pl-4 italic text-stone-600 my-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
