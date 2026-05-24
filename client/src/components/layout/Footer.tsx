@@ -1,45 +1,50 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Youtube, ExternalLink } from 'lucide-react';
-
-const email = import.meta.env.VITE_CONTACT_EMAIL || 'info@example.com';
-const phone = import.meta.env.VITE_CONTACT_PHONE || '+91-00000-00000';
-const whatsapp = import.meta.env.VITE_WHATSAPP_LINK || '#';
-const youtube = import.meta.env.VITE_YOUTUBE_LINK || '#';
+import { siteConfig } from '@/config/site';
 
 const footerLinks = [
   {
     title: 'About',
     links: [
-      { label: 'The Temple', to: '/about' },
-      { label: 'Path & Philosophy', to: '/about/path' },
-      { label: 'Goswami Family', to: '/about/goswami-family' },
+      {
+        label: 'Shri Radha Raman Lal Temple',
+        to: '/about/shri-radha-raman-lal-temple-vrindavan',
+      },
+      {
+        label: 'Gaudiya Vaishnav Philosophy',
+        to: '/about/the-gaudiya-vaishnav-philosophy',
+      },
+      { label: 'The Goswami Family', to: '/about/the-goswami-family' },
+      { label: 'Shri Pundrik Goswami Ji', to: '/shri-pundrik-goswami' },
+      { label: 'Lineage', to: '/lineage' },
     ],
   },
   {
-    title: 'Spiritual Master',
+    title: 'Programs',
     links: [
-      { label: 'Shri Pundrik Goswami', to: '/shri-pundrik-goswami' },
-      { label: 'Lineage / Parampara', to: '/lineage' },
-      { label: 'Initiation', to: '/initiation' },
       { label: 'Sankirtans', to: '/sankirtans' },
+      { label: 'Katha Request', to: '/katha-request' },
+      { label: 'Events Calendar', to: '/events' },
+      { label: 'Articles', to: '/articles' },
+      { label: 'Initiation', to: '/initiation' },
     ],
   },
   {
     title: 'Explore',
     links: [
-      { label: 'Articles', to: '/articles' },
-      { label: 'Events Calendar', to: '/events' },
       { label: 'Books & PDFs', to: '/books-pdfs' },
       { label: 'Audio & Video', to: '/audio-video' },
       { label: 'Newsletters', to: '/newsletters' },
+      { label: 'Projects / Seva', to: '/projects' },
+      { label: 'FAQs', to: '/faqs' },
     ],
   },
   {
     title: 'Connect',
     links: [
-      { label: 'Projects / Seva', to: '/projects' },
-      { label: 'FAQs', to: '/faqs' },
       { label: 'Contact', to: '/contact' },
+      { label: 'Request Katha', to: '/katha-request' },
+      { label: 'Shop', to: '/shop' },
     ],
   },
 ];
@@ -91,16 +96,16 @@ export const Footer = (): JSX.Element => (
         <div className="flex items-start gap-3">
           <MapPin className="w-5 h-5 text-gold-300 mt-0.5 shrink-0" />
           <div>
-            <p className="font-medium text-cream-50 mb-1">Visit Us</p>
-            <p className="text-cream-200/80">
-              Shri Pundrik Goswami Temple
-              <br />
-              Address line one
-              <br />
-              City, State, Country
-            </p>
+            <p className="font-medium text-cream-50 mb-1">Temple Address</p>
+            <address className="not-italic text-cream-200/80 leading-relaxed">
+              {siteConfig.temple.addressLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </address>
             <a
-              href="https://maps.google.com"
+              href={siteConfig.temple.mapsUrl}
               target="_blank"
               rel="noreferrer"
               className="text-gold-300 hover:text-gold-200 text-xs inline-flex items-center gap-1 mt-1"
@@ -113,18 +118,21 @@ export const Footer = (): JSX.Element => (
         <div className="flex items-start gap-3">
           <Phone className="w-5 h-5 text-gold-300 mt-0.5 shrink-0" />
           <div>
-            <p className="font-medium text-cream-50 mb-1">Call / WhatsApp</p>
-            <a href={`tel:${phone}`} className="text-cream-200/80 hover:text-gold-300">
-              {phone}
+            <p className="font-medium text-cream-50 mb-1">Contact Number</p>
+            <a
+              href={`tel:${siteConfig.phoneTel}`}
+              className="text-cream-200/80 hover:text-gold-300"
+            >
+              {siteConfig.phoneDisplay}
             </a>
             <br />
             <a
-              href={whatsapp}
+              href={siteConfig.whatsappChannel}
               target="_blank"
               rel="noreferrer"
               className="text-gold-300 hover:text-gold-200 text-xs inline-flex items-center gap-1 mt-1"
             >
-              WhatsApp channel <ExternalLink className="w-3 h-3" />
+              WhatsApp Channel <ExternalLink className="w-3 h-3" />
             </a>
           </div>
         </div>
@@ -133,17 +141,20 @@ export const Footer = (): JSX.Element => (
           <Mail className="w-5 h-5 text-gold-300 mt-0.5 shrink-0" />
           <div>
             <p className="font-medium text-cream-50 mb-1">Email & Media</p>
-            <a href={`mailto:${email}`} className="text-cream-200/80 hover:text-gold-300">
-              {email}
+            <a
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="text-cream-200/80 hover:text-gold-300"
+            >
+              {siteConfig.contactEmail}
             </a>
             <br />
             <a
-              href={youtube}
+              href={siteConfig.youtubeChannel}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-gold-300 hover:text-gold-200 text-xs mt-1"
             >
-              <Youtube className="w-4 h-4" /> YouTube channel
+              <Youtube className="w-4 h-4" /> YouTube Channel
             </a>
           </div>
         </div>
@@ -152,8 +163,8 @@ export const Footer = (): JSX.Element => (
       <div className="mt-10 pt-6 border-t border-saffron-800/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream-200/60">
         <p>© {new Date().getFullYear()} Shri Pundrik Goswami. All rights reserved.</p>
         <p className="font-serif italic">
-          “Hare Kṛiṣṇa Hare Kṛiṣṇa Kṛiṣṇa Kṛiṣṇa Hare Hare · Hare Rāma Hare Rāma Rāma Rāma Hare
-          Hare”
+          &ldquo;Hare Kṛiṣṇa Hare Kṛiṣṇa Kṛiṣṇa Kṛiṣṇa Hare Hare · Hare Rāma Hare Rāma Rāma Rāma Hare
+          Hare&rdquo;
         </p>
       </div>
     </div>

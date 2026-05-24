@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Calendar, HeartHandshake, Mail, Music, Newspaper 
 import { Seo } from '@/components/common/Seo';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
+import { KathaCTA } from '@/components/common/KathaCTA';
 import { publicApi } from '@/services/publicApi';
 import { ArticleCard } from '@/components/common/ArticleCard';
 import { EventCard } from '@/components/common/EventCard';
@@ -35,7 +36,7 @@ const HomePage = (): JSX.Element => {
             "linear-gradient(rgba(58, 16, 16, 0.55), rgba(67, 20, 7, 0.7)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1800&q=80')",
         }}
       >
-        <div className="container-wide pt-24 pb-16 text-center">
+        <div className="container-wide pt-28 md:pt-36 pb-16 text-center">
           <div className="inline-flex items-center gap-3 text-gold-300 text-xs sm:text-sm font-medium uppercase tracking-[0.35em] mb-5 animate-fade-in">
             <span className="h-px w-12 bg-gold-400/60" />
             Servant of Shri Radha Krishna
@@ -254,6 +255,8 @@ const HomePage = (): JSX.Element => {
           )}
         </div>
       </section>
+
+      <KathaCTA />
 
       {/* Newsletter CTA */}
       <section className="py-20 bg-gradient-to-br from-gold-50 to-cream-100">

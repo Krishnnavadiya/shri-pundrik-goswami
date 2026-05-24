@@ -5,6 +5,7 @@ import { formLimiter } from '../middleware/rateLimiters';
 import {
   contactSchema,
   registrationSchema,
+  kathaRequestSchema,
 } from '../validators/schemas';
 
 import {
@@ -30,6 +31,7 @@ import {
   submitContact,
   submitRegistration,
 } from '../controllers/form.controller';
+import { submitKathaRequest } from '../controllers/kathaRequest.controller';
 
 const router = Router();
 
@@ -62,6 +64,13 @@ router.post(
   formLimiter,
   validate(registrationSchema),
   asyncHandler(submitRegistration),
+);
+
+router.post(
+  '/katha-requests',
+  formLimiter,
+  validate(kathaRequestSchema),
+  asyncHandler(submitKathaRequest),
 );
 
 export default router;

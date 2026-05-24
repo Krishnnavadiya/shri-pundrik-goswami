@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/utils/cn';
+import { ContactBar } from '@/components/common/ContactBar';
 
 interface NavChild {
   label: string;
@@ -16,47 +17,42 @@ interface NavGroup {
 }
 
 const navigation: NavGroup[] = [
+  { label: 'Home', to: '/' },
   {
     label: 'About',
     children: [
-      { label: 'The Temple', to: '/about', description: 'Sacred ground and worship' },
-      { label: 'Path & Philosophy', to: '/about/path', description: 'The way of bhakti' },
       {
-        label: 'Goswami Family',
-        to: '/about/goswami-family',
-        description: 'Tradition and lineage',
+        label: 'Shri Radha Raman Lal Temple, Vrindavan',
+        to: '/about/shri-radha-raman-lal-temple-vrindavan',
+        description: 'Sacred abode at Keshi Ghat',
+      },
+      {
+        label: 'The Gaudiya Vaishnav Philosophy',
+        to: '/about/the-gaudiya-vaishnav-philosophy',
+        description: 'The path of sacred love',
+      },
+      {
+        label: 'The Goswami Family',
+        to: '/about/the-goswami-family',
+        description: 'Lineage and hereditary seva',
+      },
+      {
+        label: 'Shri Pundrik Goswami Ji',
+        to: '/shri-pundrik-goswami',
+        description: 'Biography and teachings',
+      },
+      {
+        label: 'Lineage',
+        to: '/lineage',
+        description: 'Parampara and succession',
       },
     ],
   },
-  {
-    label: 'Spiritual Master',
-    children: [
-      { label: 'Shri Pundrik Goswami', to: '/shri-pundrik-goswami' },
-      { label: 'Lineage / Parampara', to: '/lineage' },
-      { label: 'Initiation & Guidance', to: '/initiation' },
-      { label: 'Sankirtans & Programs', to: '/sankirtans' },
-      { label: 'Articles', to: '/articles' },
-      { label: 'Events Calendar', to: '/events' },
-    ],
-  },
-  {
-    label: 'Projects',
-    to: '/projects',
-  },
-  {
-    label: 'Explore More',
-    children: [
-      { label: 'Books & PDFs', to: '/books-pdfs' },
-      { label: 'Audio & Video', to: '/audio-video' },
-      { label: 'Newsletters', to: '/newsletters' },
-      { label: 'FAQs', to: '/faqs' },
-      { label: 'Contact', to: '/contact' },
-    ],
-  },
-  {
-    label: 'Shop',
-    to: '/shop',
-  },
+  { label: 'Sankirtans', to: '/sankirtans' },
+  { label: 'Katha Request', to: '/katha-request' },
+  { label: 'Events', to: '/events' },
+  { label: 'Articles', to: '/articles' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export const Navbar = (): JSX.Element => {
@@ -77,15 +73,21 @@ export const Navbar = (): JSX.Element => {
     setMobileExpanded(null);
   }, [location.pathname]);
 
+  const isAboutActive = location.pathname.startsWith('/about') ||
+    location.pathname === '/shri-pundrik-goswami' ||
+    location.pathname === '/lineage';
+
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-        scrolled
-          ? 'bg-cream-50/95 backdrop-blur-md shadow-sm border-b border-cream-200'
-          : 'bg-gradient-to-b from-saffron-950/40 to-transparent',
-      )}
-    >
+    <header className="fixed top-0 left-0 right-0 z-40">
+      <ContactBar />
+      <div
+        className={cn(
+          'transition-all duration-300',
+          scrolled
+            ? 'bg-cream-50/95 backdrop-blur-md shadow-sm border-b border-cream-200'
+            : 'bg-gradient-to-b from-saffron-950/40 to-transparent',
+        )}
+      >
       <div className="container-wide flex items-center justify-between h-16 lg:h-20">
         <Link to="/" className="flex items-center gap-3 group">
           <div
@@ -116,23 +118,24 @@ export const Navbar = (): JSX.Element => {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navigation.map((group) =>
             group.children ? (
               <div key={group.label} className="relative group">
                 <button
                   className={cn(
-                    'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors',
-                    scrolled
-                      ? 'text-stone-700 hover:text-saffron-800 hover:bg-cream-100'
-                      : 'text-cream-50 hover:text-gold-300',
+                    'flex items-center gap-1 px-2.5 py-2 text-sm font-medium rounded-md transition-colors',
+                    isAboutActive && group.label === 'About' && scrolled && 'bg-cream-100 text-saffron-800',
+                    isAboutActive && group.label === 'About' && !scrolled && 'text-gold-300',
+                    !isAboutActive && scrolled && 'text-stone-700 hover:text-saffron-800 hover:bg-cream-100',
+                    !isAboutActive && !scrolled && 'text-cream-50 hover:text-gold-300',
                   )}
                 >
                   {group.label}
                   <ChevronDown className="w-3.5 h-3.5" />
                 </button>
                 <div className="absolute top-full left-0 pt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200">
-                  <div className="w-64 bg-white rounded-lg shadow-xl border border-cream-200 overflow-hidden">
+                  <div className="w-72 bg-white rounded-lg shadow-xl border border-cream-200 overflow-hidden">
                     {group.children.map((child) => (
                       <NavLink
                         key={child.to}
@@ -161,9 +164,10 @@ export const Navbar = (): JSX.Element => {
               <NavLink
                 key={group.label}
                 to={group.to!}
+                end={group.to === '/'}
                 className={({ isActive }) =>
                   cn(
-                    'px-3 py-2 text-sm font-medium rounded-md transition-colors',
+                    'px-2.5 py-2 text-sm font-medium rounded-md transition-colors',
                     isActive && scrolled && 'bg-cream-100 text-saffron-800',
                     isActive && !scrolled && 'text-gold-300',
                     !isActive && scrolled && 'text-stone-700 hover:text-saffron-800 hover:bg-cream-100',
@@ -175,17 +179,6 @@ export const Navbar = (): JSX.Element => {
               </NavLink>
             ),
           )}
-          <Link
-            to="/contact"
-            className={cn(
-              'ml-3 px-4 py-2 rounded-md text-sm font-medium transition-colors',
-              scrolled
-                ? 'bg-saffron-700 hover:bg-saffron-800 text-white'
-                : 'bg-cream-50 text-saffron-900 hover:bg-gold-300',
-            )}
-          >
-            Connect
-          </Link>
         </nav>
 
         <button
@@ -245,6 +238,7 @@ export const Navbar = (): JSX.Element => {
                 <NavLink
                   key={group.label}
                   to={group.to!}
+                  end={group.to === '/'}
                   className={({ isActive }) =>
                     cn(
                       'block px-3 py-2.5 text-sm font-medium rounded-md',
@@ -258,15 +252,10 @@ export const Navbar = (): JSX.Element => {
                 </NavLink>
               ),
             )}
-            <Link
-              to="/contact"
-              className="block mt-3 px-4 py-2.5 rounded-md text-sm font-medium bg-saffron-700 text-white text-center"
-            >
-              Connect with Us
-            </Link>
           </nav>
         </div>
       )}
+      </div>
     </header>
   );
 };

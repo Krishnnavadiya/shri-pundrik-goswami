@@ -8,3 +8,4 @@ export { Faq } from './Faq';
 export { MediaItem } from './MediaItem';
 export { Project } from './Project';
 export { LineagePerson } from './LineagePerson';
+export { KathaRequest } from './KathaRequest';

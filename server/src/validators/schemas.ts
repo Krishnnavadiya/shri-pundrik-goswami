@@ -162,6 +162,73 @@ export const submissionStatusSchema = z.object({
   status: z.enum(['new', 'reviewed', 'contacted', 'closed']),
 });
 
+export const kathaProgramTypeEnum = z.enum([
+  'Katha',
+  'Pravachan',
+  'Sankirtan',
+  'Spiritual Gathering',
+  'Online Session',
+  'Other',
+]);
+
+export const kathaRequestStatusEnum = z.enum([
+  'New',
+  'Contacted',
+  'Confirmed',
+  'Rejected',
+  'Completed',
+]);
+
+const trimmed = (max: number) =>
+  z.string().trim().max(max).optional().or(z.literal(''));
+
+const optionalEmail = z
+  .string()
+  .trim()
+  .email('Please enter a valid email')
+  .optional()
+  .or(z.literal(''));
+
+const optionalIsoDate = z
+  .string()
+  .trim()
+  .refine((v) => v === '' || !Number.isNaN(Date.parse(v)), {
+    message: 'Invalid date',
+  })
+  .optional()
+  .or(z.literal(''));
+
+export const kathaRequestSchema = z.object({
+  fullName: z.string().trim().min(2, 'Full name is required').max(200),
+  phoneNumber: z.string().trim().min(5, 'Phone number is required').max(40),
+  whatsappNumber: trimmed(40),
+  email: optionalEmail,
+  city: z.string().trim().min(1, 'City is required').max(120),
+  country: z.string().trim().min(1, 'Country is required').max(120),
+  organizationName: trimmed(250),
+  programType: kathaProgramTypeEnum,
+  preferredDate: z
+    .string()
+    .trim()
+    .min(1, 'Preferred date is required')
+    .refine((v) => !Number.isNaN(Date.parse(v)), { message: 'Invalid preferred date' }),
+  alternateDate: optionalIsoDate,
+  expectedAttendees: z
+    .union([z.coerce.number().int().min(0).max(1000000), z.literal('')])
+    .optional(),
+  venueAddress: z.string().trim().min(3, 'Venue address is required').max(1000),
+  message: trimmed(5000),
+  consent: z.literal(true, {
+    errorMap: () => ({ message: 'Please confirm consent before submitting' }),
+  }),
+  honeypot: z.string().max(0).optional(),
+});
+
+export const kathaRequestStatusSchema = z.object({
+  status: kathaRequestStatusEnum,
+  adminNote: z.string().max(5000).optional(),
+});
+
 export const adminUserSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),

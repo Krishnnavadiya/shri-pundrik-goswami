@@ -1,13 +1,14 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { PublicLayout } from '@/layouts/PublicLayout';
 import HomePage from '@/pages/public/HomePage';
-import AboutPage from '@/pages/public/AboutPage';
-import PathPage from '@/pages/public/PathPage';
+import TemplePage from '@/pages/public/TemplePage';
+import PhilosophyPage from '@/pages/public/PhilosophyPage';
 import GoswamiFamilyPage from '@/pages/public/GoswamiFamilyPage';
 import ShriPundrikGoswamiPage from '@/pages/public/ShriPundrikGoswamiPage';
 import LineagePage from '@/pages/public/LineagePage';
 import InitiationPage from '@/pages/public/InitiationPage';
 import SankirtansPage from '@/pages/public/SankirtansPage';
+import KathaRequestPage from '@/pages/public/KathaRequestPage';
 import EventsPage from '@/pages/public/EventsPage';
 import EventDetailPage from '@/pages/public/EventDetailPage';
 import ArticlesPage from '@/pages/public/ArticlesPage';
@@ -39,13 +40,26 @@ const App = (): JSX.Element => (
   <Routes>
     <Route element={<PublicLayout />}>
       <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/about/path" element={<PathPage />} />
-      <Route path="/about/goswami-family" element={<GoswamiFamilyPage />} />
+
+      {/* About section */}
+      <Route
+        path="/about/shri-radha-raman-lal-temple-vrindavan"
+        element={<TemplePage />}
+      />
+      <Route
+        path="/about/the-gaudiya-vaishnav-philosophy"
+        element={<PhilosophyPage />}
+      />
+      <Route path="/about/the-goswami-family" element={<GoswamiFamilyPage />} />
+      <Route path="/about" element={<Navigate to="/about/shri-radha-raman-lal-temple-vrindavan" replace />} />
+      <Route path="/about/path" element={<Navigate to="/about/the-gaudiya-vaishnav-philosophy" replace />} />
+      <Route path="/about/goswami-family" element={<Navigate to="/about/the-goswami-family" replace />} />
+
       <Route path="/shri-pundrik-goswami" element={<ShriPundrikGoswamiPage />} />
       <Route path="/lineage" element={<LineagePage />} />
       <Route path="/initiation" element={<InitiationPage />} />
       <Route path="/sankirtans" element={<SankirtansPage />} />
+      <Route path="/katha-request" element={<KathaRequestPage />} />
       <Route path="/events" element={<EventsPage />} />
       <Route path="/events/:slug" element={<EventDetailPage />} />
       <Route path="/articles" element={<ArticlesPage />} />

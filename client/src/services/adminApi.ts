@@ -6,6 +6,8 @@ import type {
   ContactSubmission,
   EventItem,
   Faq,
+  KathaRequest,
+  KathaRequestStatus,
   LineagePerson,
   MediaItem,
   Page,
@@ -201,5 +203,25 @@ export const adminApi = {
   },
   deleteRegistration: async (id: string) => {
     await api.delete(`/admin/registrations/${id}`);
+  },
+
+  // Katha Requests
+  listKathaRequests: async (params: Record<string, unknown> = {}) => {
+    const res = await api.get<ApiResponse<KathaRequest[]>>('/admin/katha-requests', { params });
+    return res.data;
+  },
+  getKathaRequest: async (id: string) => {
+    const res = await api.get<ApiResponse<KathaRequest>>(`/admin/katha-requests/${id}`);
+    return res.data.data;
+  },
+  updateKathaRequestStatus: async (id: string, status: KathaRequestStatus, adminNote?: string) => {
+    const res = await api.patch<ApiResponse<KathaRequest>>(
+      `/admin/katha-requests/${id}/status`,
+      adminNote !== undefined ? { status, adminNote } : { status },
+    );
+    return res.data.data;
+  },
+  deleteKathaRequest: async (id: string) => {
+    await api.delete(`/admin/katha-requests/${id}`);
   },
 };

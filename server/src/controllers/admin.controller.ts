@@ -8,6 +8,7 @@ import { Registration } from '../models/Registration';
 import { MediaItem } from '../models/MediaItem';
 import { Faq } from '../models/Faq';
 import { Project } from '../models/Project';
+import { KathaRequest } from '../models/KathaRequest';
 import { ApiError } from '../utils/ApiError';
 import { sendSuccess, sendCreated } from '../utils/apiResponse';
 
@@ -24,6 +25,8 @@ export const getDashboardStats = async (_req: Request, res: Response): Promise<v
     mediaCount,
     faqCount,
     projectCount,
+    kathaRequestCount,
+    newKathaRequests,
   ] = await Promise.all([
     Article.countDocuments(),
     Article.countDocuments({ status: 'published' }),
@@ -36,6 +39,8 @@ export const getDashboardStats = async (_req: Request, res: Response): Promise<v
     MediaItem.countDocuments(),
     Faq.countDocuments(),
     Project.countDocuments(),
+    KathaRequest.countDocuments(),
+    KathaRequest.countDocuments({ status: 'New' }),
   ]);
 
   sendSuccess(res, {
@@ -43,6 +48,7 @@ export const getDashboardStats = async (_req: Request, res: Response): Promise<v
     events: { total: eventCount, upcoming: upcomingEvents },
     contacts: { total: contactCount, new: newContacts },
     registrations: { total: registrationCount, new: newRegistrations },
+    kathaRequests: { total: kathaRequestCount, new: newKathaRequests },
     media: { total: mediaCount },
     faqs: { total: faqCount },
     projects: { total: projectCount },

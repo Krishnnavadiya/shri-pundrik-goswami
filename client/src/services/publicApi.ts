@@ -3,6 +3,7 @@ import type {
   Article,
   EventItem,
   Faq,
+  KathaProgramType,
   LineagePerson,
   MediaItem,
   Page,
@@ -102,6 +103,26 @@ export const publicApi = {
     consent: boolean;
   }) => {
     const res = await api.post<ApiResponse<{ id: string }>>('/registrations', data);
+    return res.data;
+  },
+
+  submitKathaRequest: async (data: {
+    fullName: string;
+    phoneNumber: string;
+    whatsappNumber?: string;
+    email?: string;
+    city: string;
+    country: string;
+    organizationName?: string;
+    programType: KathaProgramType;
+    preferredDate: string;
+    alternateDate?: string;
+    expectedAttendees?: number | string;
+    venueAddress: string;
+    message?: string;
+    consent: true;
+  }) => {
+    const res = await api.post<ApiResponse<{ id: string }>>('/katha-requests', data);
     return res.data;
   },
 };

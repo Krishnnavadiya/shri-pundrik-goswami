@@ -7,6 +7,7 @@ import {
   Image,
   HelpCircle,
   HeartHandshake,
+  Mic2,
 } from 'lucide-react';
 import { adminApi } from '@/services/adminApi';
 import { Loader } from '@/components/common/Loader';
@@ -20,6 +21,12 @@ const cards = [
     label: 'Registrations',
     icon: UserPlus,
     color: 'bg-emerald-100 text-emerald-800',
+  },
+  {
+    key: 'kathaRequests',
+    label: 'Katha Requests',
+    icon: Mic2,
+    color: 'bg-orange-100 text-orange-800',
   },
   { key: 'media', label: 'Media Library', icon: Image, color: 'bg-blue-100 text-blue-800' },
   { key: 'faqs', label: 'FAQs', icon: HelpCircle, color: 'bg-purple-100 text-purple-800' },

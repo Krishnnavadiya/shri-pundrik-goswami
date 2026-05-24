@@ -135,6 +135,38 @@ export interface Registration {
   createdAt: string;
 }
 
+export type KathaProgramType =
+  | 'Katha'
+  | 'Pravachan'
+  | 'Sankirtan'
+  | 'Spiritual Gathering'
+  | 'Online Session'
+  | 'Other';
+
+export type KathaRequestStatus = 'New' | 'Contacted' | 'Confirmed' | 'Rejected' | 'Completed';
+
+export interface KathaRequest {
+  _id: string;
+  fullName: string;
+  phoneNumber: string;
+  whatsappNumber?: string;
+  email?: string;
+  city: string;
+  country: string;
+  organizationName?: string;
+  programType: KathaProgramType;
+  preferredDate: string;
+  alternateDate?: string;
+  expectedAttendees?: number;
+  venueAddress: string;
+  message?: string;
+  consent: boolean;
+  status: KathaRequestStatus;
+  adminNote?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface AdminUser {
   _id: string;
   id?: string;

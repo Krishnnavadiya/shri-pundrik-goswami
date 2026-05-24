@@ -12,6 +12,7 @@ import {
   lineageSchema,
   pageSchema,
   submissionStatusSchema,
+  kathaRequestStatusSchema,
   adminUserSchema,
 } from '../validators/schemas';
 
@@ -66,6 +67,12 @@ import {
   deleteContactSubmission,
   deleteRegistration,
 } from '../controllers/form.controller';
+import {
+  adminListKathaRequests,
+  adminGetKathaRequest,
+  updateKathaRequestStatus,
+  deleteKathaRequest,
+} from '../controllers/kathaRequest.controller';
 import {
   getDashboardStats,
   listAdminUsers,
@@ -137,6 +144,15 @@ router.patch(
   validate(submissionStatusSchema),
   asyncHandler(updateContactStatus),
 );
+
+router.get('/katha-requests', asyncHandler(adminListKathaRequests));
+router.get('/katha-requests/:id', asyncHandler(adminGetKathaRequest));
+router.patch(
+  '/katha-requests/:id/status',
+  validate(kathaRequestStatusSchema),
+  asyncHandler(updateKathaRequestStatus),
+);
+router.delete('/katha-requests/:id', asyncHandler(deleteKathaRequest));
 
 router.get('/users', requireRole('super_admin'), asyncHandler(listAdminUsers));
 router.post(

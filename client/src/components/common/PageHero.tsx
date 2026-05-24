@@ -28,7 +28,7 @@ export const PageHero = ({
     <section
       className={cn(
         'relative bg-cover bg-center text-cream-50',
-        small ? 'min-h-[40vh] pt-28 pb-16' : 'min-h-[60vh] pt-32 pb-20',
+        small ? 'min-h-[40vh] pt-32 md:pt-40 pb-16' : 'min-h-[60vh] pt-36 md:pt-44 pb-20',
         className,
       )}
       style={{ backgroundImage: bg }}
