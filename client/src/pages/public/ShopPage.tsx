@@ -17,11 +17,11 @@ const ShopPage = (): JSX.Element => (
         <h2 className="font-display text-3xl text-saffron-900 mb-3">Coming soon</h2>
         <p className="text-stone-600 max-w-xl mx-auto mb-8">
           A dedicated shop and donations portal is under preparation. In the meantime, please
-          reach out through the contact page for books, items, or seva sponsorships.
+          reach out through the Vaijayanti Production website for books, items, or seva sponsorships.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <a href="/contact">
-            <Button variant="primary">Contact for Offerings</Button>
+          <a href="https://vaijayantipro.shop/">
+            <Button variant="primary">Shop</Button>
           </a>
           <a href="https://razorpay.com/" target="_blank" rel="noreferrer">
             <Button variant="gold">

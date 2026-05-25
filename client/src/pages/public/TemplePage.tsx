@@ -23,7 +23,7 @@ const TemplePage = (): JSX.Element => (
       eyebrow="Sacred Abode"
       title="Shri Radha Raman Lal Temple, Vrindavan"
       subtitle="A living centre of worship on the banks of the Yamuna, rooted in the Gaudiya Vaishnav tradition and the Goswami family lineage."
-      image="https://images.unsplash.com/photo-1605369572399-05d8d64b0bbe?auto=format&fit=crop&w=1600&q=80"
+      image="https://www.shriradharaman.com/_next/image?url=%2Fassets%2Fimages%2Ftemple-front.png&w=1920&q=75"
     />
 
     <PageSection title="A Place of Eternal Remembrance">

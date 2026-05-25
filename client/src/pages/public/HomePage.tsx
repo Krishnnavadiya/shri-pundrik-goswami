@@ -33,7 +33,7 @@ const HomePage = (): JSX.Element => {
       <section className="relative min-h-[92vh] flex items-center bg-cover bg-center text-cream-50"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(58, 16, 16, 0.55), rgba(67, 20, 7, 0.7)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1800&q=80')",
+            "linear-gradient(rgba(58, 16, 16, 0.55), rgba(67, 20, 7, 0.7)), url('https://i.pinimg.com/736x/f6/39/85/f63985e3cc0157cd40d5f036eaeecd3e.jpg')",
         }}
       >
         <div className="container-wide pt-28 md:pt-36 pb-16 text-center">
@@ -72,7 +72,7 @@ const HomePage = (): JSX.Element => {
               className="aspect-[4/5] bg-cover bg-center rounded-lg shadow-soft"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1605369572399-05d8d64b0bbe?auto=format&fit=crop&w=900&q=80')",
+                  "url('https://i.pinimg.com/736x/26/35/e1/2635e1565debfb8a893f3061b3765153.jpg')",
               }}
             />
             <div className="absolute -bottom-6 -right-6 hidden md:block bg-saffron-700 text-cream-50 p-5 rounded-lg shadow-glow max-w-xs">

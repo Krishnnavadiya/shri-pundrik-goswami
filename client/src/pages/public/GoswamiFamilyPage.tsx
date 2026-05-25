@@ -31,7 +31,7 @@ const GoswamiFamilyPage = (): JSX.Element => (
       eyebrow="Sacred Lineage"
       title="The Goswami Family"
       subtitle="An unbroken chain of teachers, servants, and guardians of the Gaudiya Vaishnav tradition — from the Six Goswamis of Vrindavan to the present day."
-      image="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=80"
+      image="https://www.shriradharaman.com/_next/image?url=%2Fassets%2Fimages%2Fgoswami-family.png&w=3840&q=75"
     />
 
     <PageSection title="Origin of the Lineage">
@@ -53,8 +53,12 @@ const GoswamiFamilyPage = (): JSX.Element => (
 
     <PageSection alt title="Shri Gopal Bhatt Goswami">
       <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
-        <div className="aspect-[3/4] rounded-lg bg-gradient-to-br from-saffron-100 to-cream-200 border border-cream-300 flex items-end p-4">
-          <p className="text-xs text-stone-500">Portrait of Shri Gopal Bhatt Goswami — image placeholder</p>
+        <div className="aspect-[3/4] rounded-lg overflow-hidden border border-cream-300">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2UTmk_I99epc6zzDppsn2fmc5kN-1QnTu9g&s"
+            alt="Shri Gopal Bhatt Goswami"
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="font-serif text-stone-700 leading-relaxed space-y-4">
           <p>
@@ -112,9 +116,9 @@ const GoswamiFamilyPage = (): JSX.Element => (
           </div>
         ))}
       </div>
-      <div className="mt-8 max-w-3xl mx-auto aspect-[16/6] rounded-lg bg-cream-200 border border-cream-300 flex items-center justify-center">
+      {/* <div className="mt-8 max-w-3xl mx-auto aspect-[16/6] rounded-lg bg-cream-200 border border-cream-300 flex items-center justify-center">
         <p className="text-sm text-stone-500">Family lineage tree — diagram placeholder</p>
-      </div>
+      </div> */}
     </PageSection>
 
     <PageSection title="Role of the Goswami Family Today">

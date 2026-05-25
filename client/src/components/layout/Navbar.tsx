@@ -89,7 +89,7 @@ export const Navbar = (): JSX.Element => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
-      <ContactBar />
+      {/* <ContactBar /> */}
       <div
         className={cn(
           'transition-all duration-300',
@@ -123,7 +123,7 @@ export const Navbar = (): JSX.Element => {
                   scrolled ? 'text-saffron-700/70' : 'text-cream-100/80',
                 )}
               >
-                Servant of Shri Radha Krishna
+                Servant of Shri Radha Raman Lal
               </p>
             </div>
           </Link>

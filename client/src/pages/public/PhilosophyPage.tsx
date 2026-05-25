@@ -47,6 +47,7 @@ const PhilosophyPage = (): JSX.Element => (
       eyebrow="The Path"
       title="The Gaudiya Vaishnav Philosophy"
       subtitle="The science of sacred love — as revealed through Shri Chaitanya Mahaprabhu and preserved by the great teachers of Vrindavan."
+      image="https://www.shriradharaman.com/_next/image?url=%2Fassets%2Fimages%2Fsankirtan-illustration.jpg&w=3840&q=75"
     />
 
     <PageSection title="Shri Chaitanya Mahaprabhu — The Golden Avatara">

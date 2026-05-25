@@ -42,7 +42,14 @@ const footerLinks = [
 ];
 
 export const Footer = (): JSX.Element => (
-  <footer className="bg-gradient-to-b from-saffron-900 to-saffron-950 text-cream-100 mt-24">
+  <footer
+  className="relative mt-24 text-cream-100 bg-cover bg-center"
+  style={{
+    backgroundImage: "url('https://www.shriradharaman.com/assets/images/footer-bg.png')",
+  }}
+>
+  <div className="absolute inset-0 bg-black/60"></div>
+  <div className="relative z-10">
     <div className="container-wide pt-16 pb-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         <div className="lg:col-span-1">
@@ -53,7 +60,7 @@ export const Footer = (): JSX.Element => (
             <div>
               <p className="font-display text-lg leading-tight">Shri Pundrik Goswami</p>
               <p className="text-[10px] uppercase tracking-[0.2em] text-gold-300">
-                Servant of Shri Radha Krishna
+                Servant of Shri Radha Raman Lal
               </p>
             </div>
           </div>
@@ -159,6 +166,7 @@ export const Footer = (): JSX.Element => (
           Hare&rdquo;
         </p>
       </div>
+    </div>
     </div>
   </footer>
 );
