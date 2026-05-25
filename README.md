@@ -273,6 +273,12 @@ All collections include `createdAt` / `updatedAt` timestamps and indexed slug/la
 
 ---
 
+Website : https://shri-pundrik-goswami.vercel.app
+Admin Panel : https://shri-pundrik-goswami.vercel.app/admin/login
+Backend API : https://shri-pundrik-goswami-api.onrender.com
+
+---
+
 ## License
 
 MIT — replace with the appropriate license for the institution prior to launch.
