@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { PublicLayout } from '@/layouts/PublicLayout';
 import HomePage from '@/pages/public/HomePage';
 import TemplePage from '@/pages/public/TemplePage';
@@ -37,7 +38,8 @@ import AdminSettingsPage from '@/pages/admin/AdminSettingsPage';
 import { ProtectedRoute } from '@/routes/ProtectedRoute';
 
 const App = (): JSX.Element => (
-  <Routes>
+  <>
+    <Routes>
     <Route element={<PublicLayout />}>
       <Route path="/" element={<HomePage />} />
 
@@ -96,6 +98,8 @@ const App = (): JSX.Element => (
       <Route path="settings" element={<AdminSettingsPage />} />
     </Route>
   </Routes>
+  <Analytics />
+  </>
 );
 
 export default App;
